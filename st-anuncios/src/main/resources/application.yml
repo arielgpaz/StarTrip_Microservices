@@ -1,0 +1,13 @@
+server:
+  port: 7003
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://startripdba:StarTripAdmin2023@localhost:27017/StAnuncios?authSource=admin&authMechanism=SCRAM-SHA-256
+
+anuncios:
+  urls:
+    api-st-usuarios: localhost:7001/usuarios
+    api-st-imoveis: localhost:7002/imoveis
+

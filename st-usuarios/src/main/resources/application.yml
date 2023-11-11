@@ -1,0 +1,7 @@
+server:
+  port: 7001
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://startripdba:StarTripAdmin2023@localhost:27017/StUsuarios?authSource=admin&authMechanism=SCRAM-SHA-256

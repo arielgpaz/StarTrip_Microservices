@@ -1,0 +1,67 @@
+version: "3.1"
+
+services:
+
+  startrip_db:
+    image: mongo
+    container_name: startrip_db_mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - /home/ariel/Desenvolvimento/Docker/Volumes/MongoDB:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: startripdba
+      MONGO_INITDB_ROOT_PASSWORD: StarTripAdmin2023
+
+  st_usuarios:
+    image: 'st-usuarios:1.0'
+    build:
+      dockerfile: st-usuarios/Dockerfile
+      context: .
+    container_name: st-usuarios
+    ports:
+      - '7001:7001'
+    depends_on:
+      - startrip_db
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://startripdba:StarTripAdmin2023@startrip_db:27017/StUsuarios?authSource=admin&authMechanism=SCRAM-SHA-256
+
+  st_imoveis:
+    image: 'st-imoveis:1.0'
+    build:
+      dockerfile: st-imoveis/Dockerfile
+      context: .
+    container_name: st-imoveis
+    ports:
+      - '7002:7002'
+    depends_on:
+      - startrip_db
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://startripdba:StarTripAdmin2023@startrip_db:27017/StImoveis?authSource=admin&authMechanism=SCRAM-SHA-256
+
+  st_anuncios:
+    image: 'st-anuncios:1.0'
+    build:
+      dockerfile: st-anuncios/Dockerfile
+      context: .
+    container_name: st-anuncios
+    ports:
+      - '7003:7003'
+    depends_on:
+      - startrip_db
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://startripdba:StarTripAdmin2023@startrip_db:27017/StAnuncios?authSource=admin&authMechanism=SCRAM-SHA-256
+
+  st_reservas:
+    image: 'st-reservas:1.0'
+    build:
+      dockerfile: st-reservas/Dockerfile
+      context: .
+    container_name: st-reservas
+    ports:
+      - '7004:7004'
+    depends_on:
+      - startrip_db
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://startripdba:StarTripAdmin2023@startrip_db:27017/StReservas?authSource=admin&authMechanism=SCRAM-SHA-256
