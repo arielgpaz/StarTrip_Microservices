@@ -13,8 +13,8 @@ public class OpenApiConfig {
     OpenAPI openApi() {
         var openAPI = new OpenAPI();
         openAPI.setComponents(new Components());
-        openAPI.info(new Info().title("API de usuários do StarTrip")
-                        .description("Microsserviço responsável pelo CRUD dos usuários")
+        openAPI.info(new Info().title("API de imóveis do StarTrip")
+                        .description("Microsserviço responsável pelo CRUD dos imóveis")
                         .version("1.0.0"));
 
         return openAPI;
