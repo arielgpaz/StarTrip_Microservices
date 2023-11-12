@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -18,5 +19,7 @@ public class Pagamento {
     private FormaPagamento formaEscolhida;
 
     private StatusPagamento status;
+
+    private LocalDateTime data;
 
 }

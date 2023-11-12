@@ -1,6 +1,6 @@
 package br.com.startrip.reservas.factories;
 
-import br.com.startrip.reservas.controller.request.CadastrarReservaRequest;
+import br.com.startrip.reservas.domain.request.CadastrarReservaRequest;
 
 public class CadastrarReservaRequestFactory {
     public static CadastrarReservaRequest criarRequest() {

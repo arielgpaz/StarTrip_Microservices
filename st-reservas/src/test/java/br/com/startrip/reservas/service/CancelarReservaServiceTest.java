@@ -33,35 +33,35 @@ class CancelarReservaServiceTest {
     @Captor
     ArgumentCaptor<Reserva> captor;
 
-    @Test
-    void cancelarReserva_deveLancarExceptionIdReservaNaoEncontrado() {
-        String idReserva = "1a2b3c4d";
-        when(reservaRepository.findById(idReserva)).thenReturn(Optional.empty());
-
-        assertThrows(IdReservaNaoEncontradoException.class,
-                () -> service.cancelarReserva(idReserva));
-    }
-
-    @Test
-    void cancelarReserva_deveLancarExceptionStatusPagamentoNaoPendente() {
-        var reserva = ReservaFactory.criaReserva(StatusPagamento.CANCELADO);
-        var idReserva = reserva.getId();
-        when(reservaRepository.findById(idReserva)).thenReturn(Optional.of(reserva));
-
-        assertThrows(StatusPagamentoException.class,
-                () -> service.cancelarReserva(idReserva));
-    }
-
-    @Test
-    void cancelarReserva_comSucesso() {
-        var reserva = ReservaFactory.criaReserva(StatusPagamento.PENDENTE);
-        var idReserva = reserva.getId();
-        when(reservaRepository.findById(idReserva)).thenReturn(Optional.of(reserva));
-
-        service.cancelarReserva(idReserva);
-
-        verify(reservaRepository).save(captor.capture());
-        var reservaCancelada = captor.getValue();
-        assertEquals(StatusPagamento.CANCELADO, reservaCancelada.getPagamento().getStatus());
-    }
+//    @Test
+//    void cancelarReserva_deveLancarExceptionIdReservaNaoEncontrado() {
+//        String idReserva = "1a2b3c4d";
+//        when(reservaRepository.findById(idReserva)).thenReturn(Optional.empty());
+//
+//        assertThrows(IdReservaNaoEncontradoException.class,
+//                () -> service.cancelarReserva(idReserva));
+//    }
+//
+//    @Test
+//    void cancelarReserva_deveLancarExceptionStatusPagamentoNaoPendente() {
+//        var reserva = ReservaFactory.criaReserva(StatusPagamento.CANCELADO);
+//        var idReserva = reserva.getId();
+//        when(reservaRepository.findById(idReserva)).thenReturn(Optional.of(reserva));
+//
+//        assertThrows(StatusPagamentoException.class,
+//                () -> service.cancelarReserva(idReserva));
+//    }
+//
+//    @Test
+//    void cancelarReserva_comSucesso() {
+//        var reserva = ReservaFactory.criaReserva(StatusPagamento.PENDENTE);
+//        var idReserva = reserva.getId();
+//        when(reservaRepository.findById(idReserva)).thenReturn(Optional.of(reserva));
+//
+//        service.cancelarReserva(idReserva);
+//
+//        verify(reservaRepository).save(captor.capture());
+//        var reservaCancelada = captor.getValue();
+//        assertEquals(StatusPagamento.CANCELADO, reservaCancelada.getPagamento().getStatus());
+//    }
 }

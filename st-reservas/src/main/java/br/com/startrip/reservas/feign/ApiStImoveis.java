@@ -1,5 +1,6 @@
 package br.com.startrip.reservas.feign;
 
+
 import br.com.startrip.reservas.domain.Imovel;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

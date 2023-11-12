@@ -1,4 +1,4 @@
-package br.com.startrip.reservas.controller.request;
+package br.com.startrip.reservas.domain.request;
 
 import br.com.startrip.reservas.domain.Periodo;
 import jakarta.validation.constraints.NotNull;
@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Data
 @Builder
