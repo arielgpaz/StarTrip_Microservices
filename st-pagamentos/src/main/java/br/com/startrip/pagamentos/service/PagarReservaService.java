@@ -5,7 +5,7 @@ import br.com.startrip.pagamentos.domain.MensagemPagamento;
 import br.com.startrip.pagamentos.domain.PagamentoReserva;
 import br.com.startrip.pagamentos.domain.StatusPagamento;
 import br.com.startrip.pagamentos.domain.request.PagamentoRequest;
-import br.com.startrip.pagamentos.repository.PagamentoRepository;
+import br.com.startrip.pagamentos.producer.KafkaProducer;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class PagarReservaService {
 
-    private final PagamentoRepository pagamentoRepository;
+    private final KafkaProducer kafkaProducer;
 
     public void pagarReserva(final String idReserva, PagamentoRequest pagamentoRequest) {
 
@@ -31,7 +31,7 @@ public class PagarReservaService {
                 .pagamento(pagamento)
                 .build();
 
-        kafkaProducer.send(mensagemPagamento);
-        pagamentoRepository.save(mensagemPagamento);
+        kafkaProducer.enviarMensagem(mensagemPagamento);
     }
+
 }
