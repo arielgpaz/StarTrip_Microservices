@@ -28,7 +28,7 @@ public class EstornarReservaService {
             reservaRepository.save(reserva);
         } else {
             throw new StatusPagamentoException(
-                    "Não é possível realizar o estorno para esta reserva, pois ela não está no status PAGO.");
+                    "Não é possível realizar o estorno para esta reserva, pois ela não está com status PAGO.");
         }
     }
 }
