@@ -1,14 +1,15 @@
 package br.com.startrip.reservas.service;
 
-import br.com.startrip.reservas.controller.request.CadastrarReservaRequest;
-import br.com.startrip.reservas.controller.response.DadosAnuncioResponse;
-import br.com.startrip.reservas.controller.response.DadosSolicitanteResponse;
-import br.com.startrip.reservas.controller.response.InformacaoReservaResponse;
 import br.com.startrip.reservas.domain.*;
+import br.com.startrip.reservas.domain.request.CadastrarReservaRequest;
+import br.com.startrip.reservas.domain.response.DadosAnuncioResponse;
+import br.com.startrip.reservas.domain.response.DadosSolicitanteResponse;
+import br.com.startrip.reservas.domain.response.InformacaoReservaResponse;
 import br.com.startrip.reservas.exceptions.*;
 import br.com.startrip.reservas.feign.ApiStAnuncios;
 import br.com.startrip.reservas.feign.ApiStUsuarios;
 import br.com.startrip.reservas.repository.ReservaRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -19,6 +20,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class RealizarReservaService {
 
     private final ApiStUsuarios apiStUsuarios;
@@ -26,13 +28,6 @@ public class RealizarReservaService {
     private final ApiStAnuncios apiStAnuncios;
 
     private final ReservaRepository reservaRepository;
-
-    public RealizarReservaService(
-            ApiStUsuarios apiStUsuarios, ApiStAnuncios apiStAnuncios, ReservaRepository reservaRepository) {
-        this.apiStUsuarios = apiStUsuarios;
-        this.apiStAnuncios = apiStAnuncios;
-        this.reservaRepository = reservaRepository;
-    }
 
     public InformacaoReservaResponse realizarUmaReserva(CadastrarReservaRequest cadastrarReservaRequest) {
         Usuario solicitante = this.buscarSolicitante(cadastrarReservaRequest.getCpfSolicitante());

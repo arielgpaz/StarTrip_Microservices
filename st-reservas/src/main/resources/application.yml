@@ -5,9 +5,18 @@ spring:
   data:
     mongodb:
       uri: mongodb://startripdba:StarTripAdmin2023@localhost:27017/StReservas?authSource=admin&authMechanism=SCRAM-SHA-256
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:29092
+      group-id: startrip.reservas
+      enable-auto-commit: false
+    listener:
+      ack-mode: manual_immediate
 
 reservas:
   urls:
     api-st-usuarios: localhost:7001/usuarios
     api-st-imoveis: localhost:7002/imoveis
     api-st-anuncios: localhost:7003/anuncios
+  kafka:
+    topic-pagamentos: st-pagamentos-topic

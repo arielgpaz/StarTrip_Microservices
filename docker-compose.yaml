@@ -14,54 +14,25 @@ services:
       MONGO_INITDB_ROOT_USERNAME: startripdba
       MONGO_INITDB_ROOT_PASSWORD: StarTripAdmin2023
 
-  st_usuarios:
-    image: 'st-usuarios:1.0'
-    build:
-      dockerfile: st-usuarios/Dockerfile
-      context: .
-    container_name: st-usuarios
-    ports:
-      - '7001:7001'
-    depends_on:
-      - startrip_db
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
     environment:
-      - SPRING_DATA_MONGODB_URI=mongodb://startripdba:StarTripAdmin2023@startrip_db:27017/StUsuarios?authSource=admin&authMechanism=SCRAM-SHA-256
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "22181:2181"
 
-  st_imoveis:
-    image: 'st-imoveis:1.0'
-    build:
-      dockerfile: st-imoveis/Dockerfile
-      context: .
-    container_name: st-imoveis
-    ports:
-      - '7002:7002'
+  kafka:
+    image: confluentinc/cp-kafka:latest
     depends_on:
-      - startrip_db
-    environment:
-      - SPRING_DATA_MONGODB_URI=mongodb://startripdba:StarTripAdmin2023@startrip_db:27017/StImoveis?authSource=admin&authMechanism=SCRAM-SHA-256
-
-  st_anuncios:
-    image: 'st-anuncios:1.0'
-    build:
-      dockerfile: st-anuncios/Dockerfile
-      context: .
-    container_name: st-anuncios
+      - zookeeper
     ports:
-      - '7003:7003'
-    depends_on:
-      - startrip_db
+      - "29092:29092"
     environment:
-      - SPRING_DATA_MONGODB_URI=mongodb://startripdba:StarTripAdmin2023@startrip_db:27017/StAnuncios?authSource=admin&authMechanism=SCRAM-SHA-256
-
-  st_reservas:
-    image: 'st-reservas:1.0'
-    build:
-      dockerfile: st-reservas/Dockerfile
-      context: .
-    container_name: st-reservas
-    ports:
-      - '7004:7004'
-    depends_on:
-      - startrip_db
-    environment:
-      - SPRING_DATA_MONGODB_URI=mongodb://startripdba:StarTripAdmin2023@startrip_db:27017/StReservas?authSource=admin&authMechanism=SCRAM-SHA-256
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_RETRY_TOPIC_ENABLED: false

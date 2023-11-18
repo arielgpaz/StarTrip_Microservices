@@ -1,4 +1,4 @@
-package br.com.startrip.reservas.controller.response;
+package br.com.startrip.reservas.domain.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

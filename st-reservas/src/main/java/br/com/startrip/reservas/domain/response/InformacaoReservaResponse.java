@@ -1,4 +1,4 @@
-package br.com.startrip.reservas.controller.response;
+package br.com.startrip.reservas.domain.response;
 
 import br.com.startrip.reservas.domain.Pagamento;
 import br.com.startrip.reservas.domain.Periodo;

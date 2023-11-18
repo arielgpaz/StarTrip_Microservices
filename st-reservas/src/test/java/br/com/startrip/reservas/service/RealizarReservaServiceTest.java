@@ -1,6 +1,6 @@
 package br.com.startrip.reservas.service;
 
-import br.com.startrip.reservas.controller.request.CadastrarReservaRequest;
+import br.com.startrip.reservas.domain.request.CadastrarReservaRequest;
 import br.com.startrip.reservas.domain.*;
 import br.com.startrip.reservas.exceptions.*;
 import br.com.startrip.reservas.factories.AnuncioFactory;

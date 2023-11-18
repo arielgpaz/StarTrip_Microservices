@@ -1,0 +1,16 @@
+server:
+  port: 7005
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://startripdba:StarTripAdmin2023@localhost:27017/StPagamentos?authSource=admin&authMechanism=SCRAM-SHA-256
+  kafka:
+    bootstrap-servers: localhost:29092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+pagamentos:
+  kafka:
+    topic-pagamentos: st-pagamentos-topic

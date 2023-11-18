@@ -9,11 +9,11 @@
         <relativePath/>
     </parent>
 
-    <groupId>br.com.startrip.reservas</groupId>
-    <artifactId>st-reservas</artifactId>
+    <groupId>br.com.startrip.pagamentos</groupId>
+    <artifactId>st-pagamentos</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>st-reservas</name>
-    <description>Microsserviço responsável pelas reservas do StarTrip</description>
+    <name>st-pagamentos</name>
+    <description>Microsserviço responsável pelos pagamentos do StarTrip</description>
 
     <properties>
         <java.version>17</java.version>
