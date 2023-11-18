@@ -25,11 +25,11 @@ public class PagarReservaService {
 
             reserva.setPagamento(pagamento);
 
+            reservaRepository.save(reserva);
+
         } else {
             throw new StatusPagamentoException(
                     "Não é possível realizar o pagamento para esta reserva, pois ela não está com status PENDENTE.");
         }
-
-        reservaRepository.save(reserva);
     }
 }
