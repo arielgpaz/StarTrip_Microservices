@@ -1,7 +1,7 @@
 package br.com.startrip.usuarios.service;
 
-import br.com.startrip.usuarios.controller.request.AtualizarUsuarioRequest;
 import br.com.startrip.usuarios.domain.Usuario;
+import br.com.startrip.usuarios.domain.request.AtualizarUsuarioRequest;
 import br.com.startrip.usuarios.exception.CpfJaCadastradoParaOutroUsuarioException;
 import br.com.startrip.usuarios.exception.CpfUsuarioInexistenteException;
 import br.com.startrip.usuarios.exception.EmailJaCadastradoParaOutroUsuarioException;
@@ -56,7 +56,7 @@ public class UsuarioService {
 
         Usuario usuarioEncontrado = this.buscarUsuarioPorCpf(cpf);
 
-        Usuario usuarioAtualizado = new Usuario();
+        Usuario usuarioAtualizado = Usuario.builder().build();
         BeanUtils.copyProperties(usuarioEncontrado, usuarioAtualizado);
 
         usuarioAtualizado.setNome(atualizarUsuarioRequest.getNome());

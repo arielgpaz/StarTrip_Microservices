@@ -1,8 +1,8 @@
 package br.com.startrip.imoveis.factories;
 
-import br.com.startrip.imoveis.controller.request.CadastrarImovelRequest;
 import br.com.startrip.imoveis.domain.CaracteristicaImovel;
 import br.com.startrip.imoveis.domain.TipoImovel;
+import br.com.startrip.imoveis.domain.request.CadastrarImovelRequest;
 
 import java.util.List;
 

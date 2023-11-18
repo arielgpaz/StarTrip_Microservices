@@ -1,7 +1,7 @@
 package br.com.startrip.anuncios.controller;
 
-import br.com.startrip.anuncios.controller.request.CadastrarAnuncioRequest;
 import br.com.startrip.anuncios.domain.Anuncio;
+import br.com.startrip.anuncios.domain.request.CadastrarAnuncioRequest;
 import br.com.startrip.anuncios.service.AnuncioService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;

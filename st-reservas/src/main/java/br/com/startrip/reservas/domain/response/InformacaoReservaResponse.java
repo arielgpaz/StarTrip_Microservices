@@ -2,15 +2,11 @@ package br.com.startrip.reservas.domain.response;
 
 import br.com.startrip.reservas.domain.Pagamento;
 import br.com.startrip.reservas.domain.Periodo;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class InformacaoReservaResponse {
 
     private String idReserva;

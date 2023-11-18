@@ -1,5 +1,6 @@
-package br.com.startrip.imoveis.domain;
+package br.com.startrip.usuarios.domain.request;
 
+import br.com.startrip.usuarios.domain.Endereco;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.Valid;
@@ -15,9 +16,7 @@ import java.time.LocalDate;
 @Data
 @Builder
 @JsonIgnoreProperties(value = { "senha" }, allowSetters = true)
-public class Usuario {
-
-	private String id;
+public class CadastrarUsuarioRequest {
 
 	@NotEmpty
 	private String nome;

@@ -1,7 +1,7 @@
 package br.com.startrip.imoveis.controller;
 
-import br.com.startrip.imoveis.controller.request.CadastrarImovelRequest;
 import br.com.startrip.imoveis.domain.Imovel;
+import br.com.startrip.imoveis.domain.request.CadastrarImovelRequest;
 import br.com.startrip.imoveis.service.ImovelService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;

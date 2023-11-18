@@ -1,8 +1,8 @@
 package br.com.startrip.anuncios.factories;
 
-import br.com.startrip.anuncios.controller.request.CadastrarAnuncioRequest;
 import br.com.startrip.anuncios.domain.FormaPagamento;
 import br.com.startrip.anuncios.domain.TipoAnuncio;
+import br.com.startrip.anuncios.domain.request.CadastrarAnuncioRequest;
 
 import java.math.BigDecimal;
 import java.util.Arrays;

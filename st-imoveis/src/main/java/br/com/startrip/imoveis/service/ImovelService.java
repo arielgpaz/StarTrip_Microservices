@@ -1,8 +1,8 @@
 package br.com.startrip.imoveis.service;
 
-import br.com.startrip.imoveis.controller.request.CadastrarImovelRequest;
 import br.com.startrip.imoveis.domain.Imovel;
 import br.com.startrip.imoveis.domain.Usuario;
+import br.com.startrip.imoveis.domain.request.CadastrarImovelRequest;
 import br.com.startrip.imoveis.exceptions.IdImovelInexistenteException;
 import br.com.startrip.imoveis.exceptions.ImovelPossuiAnuncioException;
 import br.com.startrip.imoveis.exceptions.ProprietarioNaoEncontradoPeloCpfException;

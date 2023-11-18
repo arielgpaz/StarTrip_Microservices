@@ -1,9 +1,9 @@
 package br.com.startrip.anuncios.service;
 
-import br.com.startrip.anuncios.controller.request.CadastrarAnuncioRequest;
 import br.com.startrip.anuncios.domain.Anuncio;
 import br.com.startrip.anuncios.domain.Imovel;
 import br.com.startrip.anuncios.domain.Usuario;
+import br.com.startrip.anuncios.domain.request.CadastrarAnuncioRequest;
 import br.com.startrip.anuncios.exceptions.CpfUsuarioInexistenteException;
 import br.com.startrip.anuncios.exceptions.IdAnuncioNaoEncontradoException;
 import br.com.startrip.anuncios.exceptions.IdImovelInexistenteException;

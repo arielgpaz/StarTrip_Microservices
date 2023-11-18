@@ -40,7 +40,11 @@ public class RealizarReservaService {
 
         LocalDateTime dataHoraInicioReserva = LocalDateTime.of(dataInicial, LocalTime.parse("14:00"));
         LocalDateTime dataHoraFimReserva = LocalDateTime.of(dataFinal, LocalTime.parse("12:00"));
-        Periodo periodo = new Periodo(dataHoraInicioReserva, dataHoraFimReserva);
+
+        Periodo periodo = Periodo.builder()
+                .dataHoraInicial(dataHoraInicioReserva)
+                .dataHoraFinal(dataHoraFimReserva)
+                .build();
 
         long quantidadeDiarias = this.calcularQuantidadeDiarias(dataInicial, dataFinal);
         Pagamento pagamento = this.definirPagamento(anuncio.getValorDiaria(), quantidadeDiarias);

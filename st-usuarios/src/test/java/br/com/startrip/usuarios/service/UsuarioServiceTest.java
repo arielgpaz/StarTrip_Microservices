@@ -1,7 +1,7 @@
 package br.com.startrip.usuarios.service;
 
-import br.com.startrip.usuarios.controller.request.AtualizarUsuarioRequest;
 import br.com.startrip.usuarios.domain.Usuario;
+import br.com.startrip.usuarios.domain.request.AtualizarUsuarioRequest;
 import br.com.startrip.usuarios.exception.CpfJaCadastradoParaOutroUsuarioException;
 import br.com.startrip.usuarios.exception.CpfUsuarioInexistenteException;
 import br.com.startrip.usuarios.exception.EmailJaCadastradoParaOutroUsuarioException;
@@ -40,7 +40,7 @@ class UsuarioServiceTest {
 
     @Test
     void cadastrar_deveRetornarExceptionEmailJaCadastrado() {
-        var usuario = new Usuario();
+        var usuario = Usuario.builder().build();
         when(repository.existsByEmail(usuario.getEmail())).thenReturn(true);
 
         assertThrows(EmailJaCadastradoParaOutroUsuarioException.class,
@@ -49,7 +49,7 @@ class UsuarioServiceTest {
 
     @Test
     void cadastrar_deveRetornarExceptionCpfJaCadastrado() {
-        var usuario = new Usuario();
+        var usuario = Usuario.builder().build();
         when(repository.existsByEmail(usuario.getEmail())).thenReturn(false);
         when(repository.existsByCpf(usuario.getCpf())).thenReturn(true);
 
@@ -59,7 +59,7 @@ class UsuarioServiceTest {
 
     @Test
     void cadastrar_comSucesso() {
-        var usuario = new Usuario();
+        var usuario = Usuario.builder().build();
         when(repository.existsByEmail(usuario.getEmail())).thenReturn(false);
         when(repository.existsByCpf(usuario.getCpf())).thenReturn(false);
         when(repository.save(usuario)).thenReturn(usuario);
@@ -116,7 +116,7 @@ class UsuarioServiceTest {
 
     @Test
     void alterarUmUsuario_passandoEmailJaCadastradoPorOutroUsuario_deveRetornarException() {
-        var request = new AtualizarUsuarioRequest();
+        var request = AtualizarUsuarioRequest.builder().build();
         request.setEmail("email@teste.com");
         when(repository.existsByEmailAndCpfIsNot(eq(request.getEmail()), anyString())).thenReturn(true);
 
@@ -132,7 +132,7 @@ class UsuarioServiceTest {
         when(repository.existsByEmailAndCpfIsNot(request.getEmail(), cpf)).thenReturn(false);
         var usuarioCadastrado = UsuarioFactory.criaUsuario();
         when(repository.findByCpf(cpf)).thenReturn(Optional.of(usuarioCadastrado));
-        when(repository.save(any(Usuario.class))).thenReturn(new Usuario());
+        when(repository.save(any(Usuario.class))).thenReturn(Usuario.builder().build());
 
         service.alterarUmUsuario(cpf, request);
 
@@ -151,7 +151,7 @@ class UsuarioServiceTest {
         var cpf = "12345678901";
         when(repository.existsByEmailAndCpfIsNot(request.getEmail(), cpf)).thenReturn(false);
         when(repository.findByCpf(cpf)).thenReturn(Optional.of(UsuarioFactory.criaUsuario()));
-        when(repository.save(any(Usuario.class))).thenReturn(new Usuario());
+        when(repository.save(any(Usuario.class))).thenReturn(Usuario.builder().build());
 
         service.alterarUmUsuario(cpf, request);
 

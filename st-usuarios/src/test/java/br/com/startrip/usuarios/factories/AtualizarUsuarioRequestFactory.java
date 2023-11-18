@@ -1,6 +1,6 @@
 package br.com.startrip.usuarios.factories;
 
-import br.com.startrip.usuarios.controller.request.AtualizarUsuarioRequest;
+import br.com.startrip.usuarios.domain.request.AtualizarUsuarioRequest;
 
 import java.time.LocalDate;
 

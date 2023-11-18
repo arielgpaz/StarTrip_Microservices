@@ -1,10 +1,12 @@
 package br.com.startrip.usuarios.controller;
 
 
-import br.com.startrip.usuarios.controller.request.AtualizarUsuarioRequest;
 import br.com.startrip.usuarios.domain.Usuario;
+import br.com.startrip.usuarios.domain.request.AtualizarUsuarioRequest;
+import br.com.startrip.usuarios.domain.request.CadastrarUsuarioRequest;
 import br.com.startrip.usuarios.service.UsuarioService;
 import jakarta.validation.Valid;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -25,7 +27,11 @@ public class UsuarioController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Usuario cadastrarUsuario(
-			@RequestBody @Valid Usuario usuario) {
+			@RequestBody @Valid CadastrarUsuarioRequest usuarioRequest) {
+
+		Usuario usuario = Usuario.builder().build();
+		BeanUtils.copyProperties(usuarioRequest, usuario);
+
 		return usuarioService.cadastrar(usuario);
 	}
 
