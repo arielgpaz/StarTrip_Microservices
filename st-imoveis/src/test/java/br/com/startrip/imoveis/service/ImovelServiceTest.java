@@ -58,7 +58,7 @@ class ImovelServiceTest {
         var proprietario = UsuarioFactory.criaProprietario();
         when(stUsuarios.buscarUsuarioPorCpf(request.getCpfProprietario()))
                 .thenReturn(Optional.of(proprietario));
-        when(repository.save(any(Imovel.class))).thenReturn(new Imovel());
+        when(repository.save(any(Imovel.class))).thenReturn(Imovel.builder().build());
 
         service.cadastrarImovel(request);
 

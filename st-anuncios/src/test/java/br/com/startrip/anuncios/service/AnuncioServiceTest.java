@@ -83,7 +83,7 @@ class AnuncioServiceTest {
         when(stImovel.buscarImovelPorId(request.getIdImovel())).thenReturn(Optional.of(imovel));
         when(repository.existsByImovelIdAndDeletedIs(request.getIdImovel(), false)).thenReturn(false);
         when(stUsuarios.buscarUsuarioPorCpf(request.getCpfAnunciante())).thenReturn(Optional.of(anunciante));
-        when(repository.save(any(Anuncio.class))).thenReturn(new Anuncio());
+        when(repository.save(any(Anuncio.class))).thenReturn(Anuncio.builder().build());
 
         service.anunciarImovel(request);
 
@@ -143,7 +143,7 @@ class AnuncioServiceTest {
         Anuncio anuncio = AnuncioFactory.criaAnuncio();
         var idAnuncio = anuncio.getId();
         when(repository.findByIdAndDeletedIs(idAnuncio, false)).thenReturn(Optional.of(anuncio));
-        when(repository.save(anuncio)).thenReturn(new Anuncio());
+        when(repository.save(anuncio)).thenReturn(Anuncio.builder().build());
 
         service.excluirAnuncio(idAnuncio);
 
