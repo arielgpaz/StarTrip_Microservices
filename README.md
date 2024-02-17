@@ -34,7 +34,7 @@ Também foi criado um microsserviço a mais, o `st-pagamentos`, que lida com os 
 
 ## Como usar
 
-As imagens deste projeto estão disponívels do [Docker Hub](https://hub.docker.com/u/arielgpaz) e podem ser usadas através do `docker-compose.yaml`, basta seguir os passos abaixo:
+As imagens deste projeto estão disponívels no [Docker Hub](https://hub.docker.com/u/arielgpaz) e podem ser usadas através do `docker-compose.yaml`, basta seguir os passos abaixo:
 
 1) Com o Docker instalado e estando na pasta raiz do projeto, executar o comando: `docker compose up -d`
 2) Abrir o swagger: [St-Usuarios](http://localhost:7001/swagger-ui/index.html), [St-Imoveis](http://localhost:7002/swagger-ui/index.html), [St-Anuncios](http://localhost:7003/swagger-ui/index.html), [St-Reservas](http://localhost:7004/swagger-ui/index.html), [St-Pagamentos](http://localhost:7005/swagger-ui/index.html)
