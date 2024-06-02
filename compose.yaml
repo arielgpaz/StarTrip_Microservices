@@ -8,8 +8,6 @@ services:
     restart: always
     ports:
       - "27017:27017"
-    volumes:
-      - /home/ariel/Desenvolvimento/Docker/Volumes/MongoDB:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: startripdba
       MONGO_INITDB_ROOT_PASSWORD: StarTripAdmin2023
